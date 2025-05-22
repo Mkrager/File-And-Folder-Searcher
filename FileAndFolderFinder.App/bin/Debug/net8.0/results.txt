@@ -1,0 +1,5 @@
+Folders:
+C:\Users\Smaga\Desktop\TestFolder\SomeFolder
+C:\Users\Smaga\Desktop\TestFolder\SomeFolder\folder
+Files:
+C:\Users\Smaga\Desktop\TestFolder\ilhjdfgl;.txt
