@@ -2,7 +2,7 @@ using FileAndFolderFinder.App;
 
 namespace FileAndFolderFinder.Tests
 {
-    public class FileSearcherUnitTest
+    public class FileSearcherUnitTests
     {
         private readonly FileSearcher _searcher = new FileSearcher();
 
@@ -35,28 +35,6 @@ namespace FileAndFolderFinder.Tests
         }
 
         [Fact]
-        public void Search_ShouldThrowException_WhenDirectoryDoesNotExist()
-        {
-            var invalidDir = "invalid path";
-
-            Assert.Throws<DirectoryNotFoundException>(() =>
-            {
-                _searcher.Search(invalidDir, "keyword");
-            });
-        }
-
-        [Fact]
-        public void Search_ShouldThrowException_WhenPathContainsSpecialCharacters()
-        {
-            var invalidDir = "invalid path*";
-
-            Assert.Throws<IOException>(() =>
-            {
-                _searcher.Search(invalidDir, "keyword");
-            });
-        }
-
-        [Fact]
         public void Search_ShouldReturnEmpty_WhenKeywordIsEmpty()
         {
             var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -74,5 +52,39 @@ namespace FileAndFolderFinder.Tests
                 Directory.Delete(tempDir, true);
             }
         }
+
+        [Fact]
+        public void Search_ShouldThrowArgumentException_WhenDirectoryPathIsNullOrEmpty()
+        {
+            var invalidDir = "";
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _searcher.Search(invalidDir, "keyword");
+            });
+        }
+
+        [Fact]
+        public void Search_ShouldThrowDirectoryNotFoundException_WhenDirectoryDoesNotExist()
+        {
+            var invalidDir = "invalid path";
+
+            Assert.Throws<DirectoryNotFoundException>(() =>
+            {
+                _searcher.Search(invalidDir, "keyword");
+            });
+        }
+
+        [Fact]
+        public void Search_ShouldThrowIOException_WhenPathContainsSpecialCharacters()
+        {
+            var invalidDir = "invalid path*";
+
+            Assert.Throws<IOException>(() =>
+            {
+                _searcher.Search(invalidDir, "keyword");
+            });
+        }
+
     }
 }
