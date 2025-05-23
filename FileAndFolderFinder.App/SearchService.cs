@@ -26,7 +26,7 @@
             RunSearch(directoryPath, searchKeyword);
         }
 
-        void RunSearch(string directoryPath, string searchKeyword)
+        private void RunSearch(string directoryPath, string searchKeyword)
         {
             var searcher = new FileSearcher();
 
@@ -64,7 +64,7 @@
             }
         }
 
-        string GetSearchKeyword()
+        private string GetSearchKeyword()
         {
             string searchKeyword;
 
@@ -85,7 +85,7 @@
             return searchKeyword;
         }
 
-        string GetPath()
+        private string GetPath()
         {
             string directoryPath;
             Console.Write("Enter a directory path: ");
@@ -114,12 +114,11 @@
             return directoryPath;
         }
 
-        void WriteError(string message)
+        private void WriteError(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"Error: {message}");
             Console.ResetColor();
         }
-
     }
 }
