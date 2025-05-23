@@ -7,6 +7,30 @@ namespace FileAndFolderFinder.Tests
         private readonly FileSearcher _searcher = new FileSearcher();
 
         [Fact]
+        public void Search_ShouldFindFileContainingKeywords()
+        {
+            string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirection);
+
+            try
+            {
+                string testFile = Path.Combine(tempDirection, "test_file.txt");
+                File.WriteAllText(testFile, "test");
+
+                var results = _searcher.Search(tempDirection, "test");
+
+                Assert.Empty(results.Directories);
+                Assert.Single(results.Files);
+                Assert.Contains(testFile, results.Files);
+            }
+
+            finally
+            {
+                Directory.Delete(tempDirection, true);
+            }
+        }
+
+        [Fact]
         public void Search_ShouldFindFilesOrFoldersContainingKeywords()
         {
             string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
