@@ -7,13 +7,13 @@
             var files = new List<string>();
             var directories = new List<string>();
 
-            foreach(var path in Directory.EnumerateFileSystemEntries(directoryPath, "*", SearchOption.AllDirectories))
+            foreach (var path in Directory.EnumerateFileSystemEntries(directoryPath, "*", SearchOption.AllDirectories))
             {
                 var name = Path.GetFileName(path);
 
-                if(name != null && name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                if (name != null && name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
-                    if(File.Exists(path))
+                    if (File.Exists(path))
                         files.Add(path);
                     if (Directory.Exists(path))
                         directories.Add(path);

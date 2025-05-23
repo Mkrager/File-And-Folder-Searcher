@@ -27,15 +27,15 @@
 
                 directoryPath = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(directoryPath))
+                if (string.IsNullOrWhiteSpace(directoryPath))
                 {
-                    WriteError("Empty input. Plese type valid source: ");
+                    WriteError("Empty input. Please type valid source: ");
                     continue;
                 }
 
                 if (!Directory.Exists(directoryPath))
                 {
-                    WriteError("Invalid directory. Plese type valid source: ");
+                    WriteError("Invalid directory. Please type valid source: ");
                     continue;
                 }
 
@@ -50,15 +50,16 @@
             {
                 searchKeyword = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(searchKeyword))
+                if (string.IsNullOrWhiteSpace(searchKeyword))
                 {
                     WriteError("Empty keyword. Please enter a keyword to search: ");
                     continue;
                 }
+
                 break;
             } while (true);
 
-            FileSearcher searcher = new FileSearcher();
+            var searcher = new FileSearcher();
 
             try
             {
@@ -85,7 +86,7 @@
 
                     File.WriteAllLines(outputPath, content);
 
-                    Console.WriteLine($"Results writed at file: {outputPath}");
+                    Console.WriteLine($"The result is written to a file: {outputPath}");
                 }
             }
             catch (Exception ex)
