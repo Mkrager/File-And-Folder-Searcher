@@ -31,6 +31,30 @@ namespace FileAndFolderFinder.Tests
         }
 
         [Fact]
+        public void Search_ShouldFindDirectionContainingKeywords()
+        {
+            string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirection);
+
+            try
+            {
+                string testDirection = Path.Combine(tempDirection, "testFolder");
+                Directory.CreateDirectory(testDirection);
+
+                var results = _searcher.Search(tempDirection, "test");
+
+                Assert.Single(results.Directories);
+                Assert.Empty(results.Files);
+                Assert.Contains(testDirection, results.Directories);
+            }
+
+            finally
+            {
+                Directory.Delete(tempDirection, true);
+            }
+        }
+
+        [Fact]
         public void Search_ShouldFindFilesOrFoldersContainingKeywords()
         {
             string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
