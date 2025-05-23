@@ -7,6 +7,37 @@ namespace FileAndFolderFinder.Tests
         private readonly FileSearcher _searcher = new FileSearcher();
 
         [Fact]
+        public void DeepSearch_ShouldFindFileAndFolderContainingKeywords()
+        {
+            string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirection);
+
+            try
+            {
+                string testDirection = Path.Combine(tempDirection, "testFolder1");
+                Directory.CreateDirectory(testDirection);
+
+                string testDirection2 = Path.Combine(tempDirection, "testFolder2");
+                Directory.CreateDirectory(testDirection2);
+
+                string testFile = Path.Combine(testDirection2, "test_file.txt");
+                File.WriteAllText(testFile, "test");
+
+                var results = _searcher.Search(tempDirection, "test");
+
+                Assert.Contains(testDirection, results.Directories);
+                Assert.Contains(testDirection2, results.Directories);
+                Assert.Single(results.Files);
+                Assert.Contains(testFile, results.Files);
+            }
+
+            finally
+            {
+                Directory.Delete(tempDirection, true);
+            }
+        }
+
+        [Fact]
         public void Search_ShouldFindFileContainingKeywords()
         {
             string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -31,7 +62,7 @@ namespace FileAndFolderFinder.Tests
         }
 
         [Fact]
-        public void Search_ShouldFindDirectionContainingKeywords()
+        public void Search_ShouldFindFolderContainingKeywords()
         {
             string tempDirection = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(tempDirection);
