@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileAndFolderFinder.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+686e341ed7925e033295f9909a5332ca5274ac6b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab8900443b5c4e22e79a3f32d7f85f1f11f6399e")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileAndFolderFinder.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileAndFolderFinder.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
