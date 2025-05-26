@@ -1,9 +1,0 @@
-Folders:
-C:\Users\Smaga\Desktop\TestFolder\SomeFolder
-C:\Users\Smaga\Desktop\TestFolder\SomeFolder\folder\somepoopes
-Files:
-C:\Users\Smaga\Desktop\TestFolder\SomeText.txt
-C:\Users\Smaga\Desktop\TestFolder\SomeText2.txt
-C:\Users\Smaga\Desktop\TestFolder\SomeFolder\SecoundSomeText.txt
-C:\Users\Smaga\Desktop\TestFolder\SomeFolder\SomeText.txt
-C:\Users\Smaga\Desktop\TestFolder\SomeFolder\folder\Somepoop.txt
